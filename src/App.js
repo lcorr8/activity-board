@@ -1,25 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ActivityBoard from './components/ActivityBoardComponent';
+const util = require('util')
 
 class App extends Component {
+  constructor(){
+    super();
+
+    this.state = {
+      activities: []
+    }
+  }
+
+  componentDidMount(){
+    console.log("inside component did mount")
+    fetch('http://localhost:3001/api/v1/activities')
+    .then(results => {
+      return results.json();
+    }).then(data => {
+      //select data to return
+      console.log('data: ' + util.inspect(data,false,null,true))
+      data.map((activity) => {
+        console.log("activity: " + activity.title)
+      })
+      this.setState({activities: data}, () => {
+        console.log("state has been set")
+      })
+    }).catch(error => console.log(error))
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <h1>Activities Board</h1>
+        <ActivityBoard title="Berlin Activities" activities={this.state.activities} ></ActivityBoard>
       </div>
     );
   }
