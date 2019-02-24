@@ -12,6 +12,11 @@ export default class ActivityBoard extends Component{
             <div>
                 <h2>{this.props.title}</h2>
                 <section>
+                    <button className="newActivityButton" onClick={this.props.addNewActivity}>
+                        New Activity
+                    </button>
+                    </section>
+                <section>
                     {activities}
                 </section>
             </div>
