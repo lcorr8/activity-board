@@ -50,7 +50,7 @@ export default class ActivityForm extends Component{
             // console.log(response.json())
             return response.json()
         }).then(data => {
-            this.props.updateIdea(data)
+            this.props.updateIdea({activity: data})
             console.log('response data: ' + util.inspect(data))
             // console.log("new activity: " + util.inspect(data,false,null,true))
             // console.log("id: " + data.id)
