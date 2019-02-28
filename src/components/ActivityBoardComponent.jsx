@@ -1,11 +1,20 @@
 import React, {Component} from 'react';
 import Activity from '../components/ActivityComponent';
+import ActivityForm from '../components/ActivityFormComponent';
 
 export default class ActivityBoard extends Component{
-
+    constructor(props){
+        super(props);
+    }
+    
+    
     render(){
         let activities = this.props.activities.map((act) => {
-            return <Activity key={act.id} title={act.title} neighborhood={act.hood} link={act.link} />
+            if (this.props.editingActivityId === act.id) {
+                return <Activity key={act.id} title={act.title} neighborhood={act.hood} link={act.link}activity={act} />
+            } else {
+                return <ActivityForm key={act.id} activity={act} updateIdea={this.props.updateIdea}/>
+            }
         })
         
         return(
