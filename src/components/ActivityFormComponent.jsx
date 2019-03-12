@@ -6,14 +6,17 @@ export default class ActivityForm extends Component{
     constructor(props){
         super(props);
         this.state = {
-            title: this.props.title,
-            link: this.props.link,
-            neighborhood: this.props.neighborhood
+            title: this.props.activity.title,
+            link: this.props.activity.link,
+            neighborhood: this.props.activity.neighborhood
         }
     }
 
     handleInput = (event) => {
-        this.setState({[event.target.name]: event.target.value})
+        this.props.resetNotification()
+        this.setState({
+            [event.target.name]: event.target.value,
+        })
       }
 
       handleBlur = (event) => {

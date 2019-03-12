@@ -6,14 +6,18 @@ export default class ActivityBoard extends Component{
     constructor(props){
         super(props);
     }
-    
-    
+
+    componentWillReceiveProps(nextProps){
+        console.log("nextProps")
+        console.log(nextProps.activities[0])
+    }
+
     render(){
         let activities = this.props.activities.map((act) => {
             if (this.props.editingActivityId === act.id) {
-                return <Activity key={act.id} title={act.title} neighborhood={act.hood} link={act.link}activity={act} />
+                return <ActivityForm key={act.id} activity={act} updateIdea={this.props.updateIdea} resetNotification={this.props.resetNotification} />
             } else {
-                return <ActivityForm key={act.id} activity={act} updateIdea={this.props.updateIdea}/>
+                return <Activity key={act.id} title={act.title} neighborhood={act.hood} link={act.link} activity={act} onClick={this.props.enableEditing} onDelete={this.props.onDelete} />
             }
         })
         
