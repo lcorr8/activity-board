@@ -99,9 +99,11 @@ class App extends Component {
             return response
         }).then(data => {
             const activityIndex = this.state.activities.findIndex(x => x.id === id)
+            const activityTitle = this.state.activities[activityIndex].title
             const activities = update(this.state.activities, { $splice: [[activityIndex, 1]]})
             this.setState({
-                activities: activities
+                activities: activities,
+                notification: `Activity (${id}: ${activityTitle}) deleted!`
             })
         }).catch(error => console.log(error))
     }
