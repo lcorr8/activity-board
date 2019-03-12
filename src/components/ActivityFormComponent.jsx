@@ -38,15 +38,6 @@ export default class ActivityForm extends Component{
                 }),
                 body: JSON.stringify({
                     activity: activity
-            // activity: 
-            // {
-            //   title: "999",
-            //   neighborhood: "post neigh",
-            //   link:  "post link",
-            //   time: 5.0,
-            //   notes:  "post notes",
-            //   activity_type: "post types"
-            // }
                 })
         }).then(response => {
             console.log('inside response from post')
