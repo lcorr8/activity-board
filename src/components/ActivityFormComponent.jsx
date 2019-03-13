@@ -5,6 +5,7 @@ const util = require('util')
 export default class ActivityForm extends Component{
     constructor(props){
         super(props);
+
         this.state = {
             title: this.props.activity.title,
             link: this.props.activity.link,
@@ -45,6 +46,7 @@ export default class ActivityForm extends Component{
             return response.json()
         }).then(data => {
             this.props.updateIdea({activity: data})
+            console.log("updated activity")
             console.log('response data: ' + util.inspect(data))
             // console.log("new activity: " + util.inspect(data,false,null,true))
             // console.log("id: " + data.id)
@@ -63,15 +65,15 @@ export default class ActivityForm extends Component{
     render(){
         return(
             <div className="tile">
-            <form onBlur={this.handleBlur} >
+            <form onBlur={this.handleBlur} autocomplete="off" >
                 <label>Activity:
-                <input type="text" name="title" placeholder="Enter an activity" value={this.state.title} onChange={this.handleInput}></input>
+                <input className="input" type="text" name="title" placeholder="Activity title" value={this.state.title} onChange={this.handleInput}></input>
                 </label>
                 <label>Neighborhood:
-                <input type="text" name="neighborhood" placeholder="Enter a neighborhood" value={this.state.neighborhood} onChange={this.handleInput} ></input>
+                <input className="input" type="text" name="neighborhood" placeholder="Neighborhood" value={this.state.neighborhood} onChange={this.handleInput} ></input>
                 </label>
                 <label>Link:
-                <input type="text" name="link" placeholder="Enter a link" value={this.state.link} onChange={this.handleInput} ></input>
+                <input className="input" type="text" name="link" placeholder="Link" value={this.state.link} onChange={this.handleInput} ></input>
                 </label>
             </form>
             </div>

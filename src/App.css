@@ -21,15 +21,16 @@
 
   .input {
     border: 0;
-    background: none;
+    background: lightseagreen;
     outline: none;
     margin-top:10px;
-    width: 140px;
-    font-size: 11px;
+    width: 90%;
+    font-size: 1.25em;
+    border-bottom: solid 3px lightgray;
   }
-  
+
   .input:focus {
-    border: solid 1px lightgrey;
+    border-bottom: solid 3px white;
   }
 
   /* hide delete button unless you hver over it */
